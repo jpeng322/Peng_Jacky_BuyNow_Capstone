@@ -1,0 +1,27 @@
+const express = require("express");
+const app = express();
+const port = 3000;
+
+require("dotenv").config();
+const mongoose = require("mongoose");
+app.get("/", (req, res) => {
+  res.send("welcome");
+});
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+mongoose.connect(process.env.MONGO_DB, console.log("mongoose connected"));
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection err:"));
+db.once("open", () => {
+  console.log("database connected", process.env.MONGO_DB);
+});
+
+
+
+
+app.listen(port, () => {
+  console.log(`Server is listening on port: ${port}`);
+});

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const usersRouter = require("./routes/users.js");
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -19,6 +20,8 @@ db.once("open", () => {
   console.log("database connected", process.env.MONGO_DB);
 });
 
+
+app.use("/api/users", usersRouter);
 
 
 

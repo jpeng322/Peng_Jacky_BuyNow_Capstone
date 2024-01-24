@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+
+//routes
 const usersRouter = require("./routes/users.js");
 const authRouter = require("./routes/auth.js");
+const cartRouter = require("./routes/cart.js");
+//
+
 const cors = require("cors");
 
 require("dotenv").config();
@@ -29,6 +34,7 @@ db.once("open", () => {
 
 app.use(authRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/cart", cartRouter);
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`);

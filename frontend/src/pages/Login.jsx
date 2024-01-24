@@ -44,7 +44,7 @@ const Login = () => {
               />
             </div>
             <div className="flex justify-center items-center">
-              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow duration-100">
                 Sign In
               </button>
             </div>
@@ -54,7 +54,7 @@ const Login = () => {
             <div className="text-center flex justify-center gap-2">
               <p>Don't Have an Account?</p>
               <Link
-                className="font-medium text-green-600 hover:text-green-500 dark:text-green-400 dark:hover:text-green-300 hover:underline"
+                className="font-medium text-green-600 hover:text-green-500 dark:text-green-400 dark:hover:text-green-300 hover:underline "
                 to="/signup"
               >
                 Sign Up Here

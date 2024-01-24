@@ -74,7 +74,7 @@ const Signup = () => {
               />
             </div>
             <div className="flex justify-center items-center">
-              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow duration-100">
                 Sign In
               </button>
             </div>

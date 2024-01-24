@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <header className="flex h-14 items-center justify-between px-4 my-3 md:px-6">
-      <Link className="flex items-center gap-2" to="/">
-        <span className="sr-only">Acme Inc</span>
+      <Link className="  flex items-center gap-2" to="/">
+        <span className="font-bold text-green-600 text-xl">BuyNow</span>
       </Link>
       <nav className="hidden md:flex gap-4">
         <Link
@@ -32,7 +32,6 @@ const Navbar = () => {
           Login
         </Link>
       </nav>
-      <span className="sr-only">Toggle navigation menu</span>
     </header>
   );
 };

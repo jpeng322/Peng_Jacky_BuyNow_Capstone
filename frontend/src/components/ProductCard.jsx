@@ -82,7 +82,8 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </a>
         <a
-          href="#"
+          href={product.offer.offer_page_url}
+          target="_blank"
           className="border border-green-600 text-green-600 border-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:text-green-700 "
         >
           More Information

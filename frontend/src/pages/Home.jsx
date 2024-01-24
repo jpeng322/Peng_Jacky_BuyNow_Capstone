@@ -3,32 +3,6 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 const Home = () => {
     return (
         <div className="flex flex-col min-h-screen">
-        <header className="flex h-14 items-center justify-between px-4 md:px-6">
-          <Link className="flex items-center gap-2" to="/">
-            <span className="sr-only">Acme Inc</span>
-          </Link>
-          <nav className="hidden md:flex gap-4">
-            <Link
-              className="text-sm font-medium hover:underline underline-offset-4"
-              to="/shop"
-            >
-              Shop
-            </Link>
-            <Link
-              className="text-sm font-medium hover:underline underline-offset-4"
-              to="/about"
-            >
-              About
-            </Link>
-            <Link
-              className="text-sm font-medium hover:underline underline-offset-4"
-              to="/contact"
-            >
-              Contact
-            </Link>
-          </nav>
-            <span className="sr-only">Toggle navigation menu</span>
-        </header>
         <main className="flex-1">
           <section className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">

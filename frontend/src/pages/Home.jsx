@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 const Home = () => {
   return (
-    <div className="flex flex-col h-[90vh]">
-      <main className="flex-1 border flex items-center">
-        <section className="w-full py-12 md:py-24 lg:py-32 h-full flex flex-1 justify-center items-center mb-[200px] ">
+    <div className="flex flex-col ">
+      <main className="flex-1 flex items-center">
+        <section className="w-full py-12 md:py-24 lg:py-32 h-full flex flex-1 justify-center items-center mt-[75px] ">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">

@@ -2,8 +2,15 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const usersRouter = require("./routes/users.js");
+const authRouter = require("./routes/auth.js");
+const cors = require("cors");
 
 require("dotenv").config();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 const mongoose = require("mongoose");
 app.get("/", (req, res) => {
   res.send("welcome");
@@ -20,10 +27,8 @@ db.once("open", () => {
   console.log("database connected", process.env.MONGO_DB);
 });
 
-
+app.use(authRouter);
 app.use("/api/users", usersRouter);
-
-
 
 app.listen(port, () => {
   console.log(`Server is listening on port: ${port}`);

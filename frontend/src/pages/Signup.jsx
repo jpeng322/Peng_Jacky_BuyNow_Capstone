@@ -37,19 +37,20 @@ const Signup = () => {
     }
   };
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 dark:bg-gray-800">
+    <div className="h-[90.9vh] bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         {/* <img
               alt="Workflow"
               className="mx-auto h-12 w-auto"
               src="/placeholder.svg"
             /> */}
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-gray-200">
+        <h1 className="text-6xl text-green-600 font-bold text-center">BuyNow</h1>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 ">
           Sign Up Your Account
         </h2>
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 dark:bg-gray-900">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 ">
           <form action="#" className="space-y-3" onSubmit={handleSubmit}>
             <div>
               <label
@@ -100,7 +101,7 @@ const Signup = () => {
                 onChange={(e) => setLname(e.target.value)}
               />
             </div>
-            <div >
+            <div>
               <label
                 className="block text-gray-700 text-sm font-bold  "
                 htmlFor="password"
@@ -130,7 +131,7 @@ const Signup = () => {
             <div className="text-center flex justify-center gap-2">
               <p>Already Have an Account?</p>
               <Link
-                className="font-medium text-green-600 hover:text-green-500 dark:text-green-400 dark:hover:text-green-300 hover:underline"
+                className="font-medium text-green-600 hover:text-green-500  hover:underline"
                 to="/login"
               >
                 Login Here

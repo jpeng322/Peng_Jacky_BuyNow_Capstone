@@ -13,16 +13,27 @@
 
 function ErrorPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="h-[90.9vh] flex flex-col items-center justify-center bg-gray-100 ">
       <div className="space-y-4">
-        <FrownIcon className="h-12 w-12 text-gray-500 dark:text-gray-400" />
-        <h1 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+        <div className="flex items-center gap-2 ">
+          <FrownIcon className="h-14 w-14 text-gray-500 border " />
+          <h1 className="text-6xl text-green-600 font-bold text-center">
+            BuyLater
+          </h1>
+        </div>
+        <h1 className="text-2xl font-bold text-gray-700 ">
           Oops! Something went wrong.
         </h1>
-        <p className="text-gray-600 dark:text-gray-300">
-          We're sorry, but an unexpected error has occurred. Please try again
-          later.
-        </p>
+        {localStorage.getItem("token") === null ? (
+          <p className="text-gray-600 ">
+            Please login to visit the shop.
+          </p>
+        ) : (
+          <p className="text-gray-600 ">
+            We're sorry, but an unexpected error has occurred. Please try again
+            later.
+          </p>
+        )}
         {/* <Button variant="outline">Return to Homepage</Button> */}
       </div>
     </div>

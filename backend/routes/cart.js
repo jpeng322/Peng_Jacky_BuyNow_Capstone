@@ -81,36 +81,41 @@ router.get("/cartitem/:itemId", async (req, res) => {
   }
 });
 
-// router.delete("/removeCartItem/:itemId", async (req, res) => {
-//   console.log("route hit", req.params.userId, req.params.itemId);
-//   try {
-//     const user = await User.findById(req.params.userId);
-
-//     if (!user) {
-//       return res.status(404).send("User not found");
-//     }
-
-//     user.items.pull(req.params.cartItemId);
-//     await user.save();
-
-//     res.send({ message: "CartItem removed successfully" });
-//   } catch (e) {
-//     console.log(e);
-//     res.status(500).send(e);
-//   }
-// });
-
-
 router.delete("/removeCartItem/:cartItemId", async (req, res) => {
   try {
-     // Delete the CartItem
-     const deletedCartItem = await CartItem.findByIdAndDelete(req.params.cartItemId);
+    // Delete the CartItem
+    const deletedCartItem = await CartItem.findByIdAndDelete(
+      req.params.cartItemId
+    );
+
+    if (!deletedCartItem) {
+      return res.status(404).send("CartItem not found");
+    }
+
+    res.send({
+      message: "CartItem removed successfully",
+      data: deletedCartItem,
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send(e);
+  }
+});
+
+router.put("/updateCartItem/:cartItemId", async (req, res) => {
+  try {
+     // Update the quantity of the CartItem
+     const updatedCartItem = await CartItem.findByIdAndUpdate(
+       req.params.cartItemId,
+       { quantity: req.body.quantity },
+       { new: true }
+     );
  
-     if (!deletedCartItem) {
+     if (!updatedCartItem) {
        return res.status(404).send("CartItem not found");
      }
  
-     res.send({ message: "CartItem removed successfully", data: deletedCartItem });
+     res.send({ message: "CartItem updated successfully", data: updatedCartItem });
   } catch (e) {
      console.log(e)
      res.status(500).send(e);

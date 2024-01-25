@@ -1,13 +1,12 @@
 import axios from "axios";
-
+import { useState } from "react";
 const ItemCard = ({
   item,
   listOfCartItems,
   setListOfCartItems,
   updateCart,
+  updateItemQuantityList,
 }) => {
-  console.log(item);
-
   const removeItem = async (e, id) => {
     console.log("asdasda");
     e.preventDefault();
@@ -18,12 +17,37 @@ const ItemCard = ({
 
       if (response) {
         const data = response.data;
-        // const updatedCartItems = listOfCartItems.filter((item) => {
-        //   return data._id !== item._id;
-        // });
-        // setListOfCartItems(updatedCartItems);
       } else {
         console.log("Delete failed");
+      }
+    } catch (e) {}
+  };
+
+  const updateItem = async (e, id, type) => {
+    console.log("asdasda");
+    e.preventDefault();
+    let quantity = item.quantity;
+    if (type === "increase") {
+      quantity += 1;
+    } else if (type === "decrease") {
+      quantity -= 1;
+    } else {
+      return;
+    }
+
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/api/cart/updateCartItem/${id}`,
+        {
+          quantity: quantity,
+        }
+      );
+
+      if (response) {
+        const data = response.data;
+        console.log(data);
+      } else {
+        console.log("Update failed");
       }
     } catch (e) {}
   };
@@ -43,7 +67,13 @@ const ItemCard = ({
       </div>
       <div className="w-full md:w-1/4 flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          <button className="border border-gray-300 rounded-full p-2 hover:bg-gray-100">
+          <button
+            className="border border-gray-300 rounded-full p-2 hover:bg-gray-100 "
+            onClick={(e) => {
+              updateItem(e, item._id, "decrease");
+              updateItemQuantityList(item._id, "decrease");
+            }}
+          >
             <svg
               className="w-4 h-4"
               fill="none"
@@ -61,7 +91,13 @@ const ItemCard = ({
             <span className="sr-only">Decrease quantity</span>
           </button>
           <span className="font-semibold">{item.quantity}</span>
-          <button className="border border-gray-300 rounded-full p-2 hover:bg-gray-100">
+          <button
+            className="border border-gray-300 rounded-full p-2 hover:bg-gray-100"
+            onClick={(e) => {
+              updateItem(e, item._id, "increase");
+              updateItemQuantityList(item._id, "increase");
+            }}
+          >
             <svg
               className="w-4 h-4"
               fill="none"

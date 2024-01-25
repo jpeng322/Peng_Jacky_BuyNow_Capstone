@@ -29,7 +29,16 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/shop",
+        path: "/shop/:product",
+        element: <Shop />,
+        loader: ({ params }) => {
+          console.log(params);
+          const product = params.product;
+          return getProducts(product);
+        },
+      },
+      {
+        path: "/shop/",
         element: <Shop />,
         loader: () => {
           return getProducts();
@@ -50,6 +59,7 @@ const router = createBrowserRouter([
           return getCartItems();
         },
       },
+
       {
         path: "*",
         element: <ErrorPage />,

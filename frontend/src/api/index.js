@@ -15,12 +15,12 @@ export const getCartItems = async (id) => {
   }
 };
 
-export const getProducts = async () => {
+export const getProducts = async (product = "Nike shoes") => {
   const options = {
     method: "GET",
     url: "https://real-time-product-search.p.rapidapi.com/search",
     params: {
-      q: "Nike shoes",
+      q: product,
       country: "us",
       language: "en",
     },

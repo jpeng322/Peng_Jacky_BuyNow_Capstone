@@ -12,7 +12,7 @@ const Signup = () => {
     console.log(`Email: ${email}, Password: ${password}`);
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3000/signup`, {
+      const response = await axios.post(`http://host:3000/signup`, {
         email,
         password,
         fname,
@@ -44,7 +44,9 @@ const Signup = () => {
               className="mx-auto h-12 w-auto"
               src="/placeholder.svg"
             /> */}
-        <h1 className="text-6xl text-green-600 font-bold text-center">BuyNow</h1>
+        <h1 className="text-6xl text-green-600 font-bold text-center">
+          BuyNow
+        </h1>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 ">
           Sign Up Your Account
         </h2>

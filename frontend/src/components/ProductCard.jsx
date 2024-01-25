@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/cart/cartItem`,
+        `${import.meta.env.VITE_PORT}/api/cart/cartItem`,
         {
           productTitle: product.product_title,
           price: product.offer.price,

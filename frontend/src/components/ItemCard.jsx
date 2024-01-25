@@ -12,7 +12,7 @@ const ItemCard = ({
     e.preventDefault();
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/cart/removeCartItem/${id}`
+        `${import.meta.env.VITE_PORT}/api/cart/removeCartItem/${id}`
       );
 
       if (response) {
@@ -37,7 +37,7 @@ const ItemCard = ({
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/cart/updateCartItem/${id}`,
+        `${import.meta.env.VITE_PORT}/api/cart/updateCartItem/${id}`,
         {
           quantity: quantity,
         }

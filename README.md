@@ -2,6 +2,10 @@
 
 BuyNow is a simple ecommerce app that allows users to search up their desired products and look for more information on them. They can also add the items to cart.
 
+# Deployed Link
+
+https://buynow-frontend.onrender.com
+
 ![Alt text](images/image-2.png)
 
 ## Built With

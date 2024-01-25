@@ -12,9 +12,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Checkout from "./pages/Checkout";
 
-
 //api
-import { getCartItems } from "./api";
+import { getCartItems, getProducts } from "./api";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +31,9 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+        loader: () => {
+          return getProducts();
+        },
       },
       {
         path: "/login",

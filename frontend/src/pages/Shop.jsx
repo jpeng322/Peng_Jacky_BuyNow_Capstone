@@ -2,10 +2,15 @@ import React from "react";
 import products from "../../data2";
 import ProductCard from "../components/ProductCard";
 import ErrorPage from "./ErrorPage";
+import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 const Shop = () => {
   // console.log(products);
-  const listOfProducts = products.data;
-  console.log(localStorage.getItem("token") === null);
+  const productsList = useLoaderData();
+  // const listOfProducts = products.data;
+
+  console.log(productsList);
+  const [listOfProducts, setListOfProducts] = useState(productsList);
   return (
     <>
       {localStorage.getItem("token") === null ? (

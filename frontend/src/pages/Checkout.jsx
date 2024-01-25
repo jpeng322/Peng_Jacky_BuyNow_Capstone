@@ -2,7 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
 import { useState } from "react";
-
+import axios from "axios";
 const Checkout = () => {
   const cartItems = useLoaderData();
 

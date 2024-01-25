@@ -9,6 +9,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     console.log(`Email: ${email}, Password: ${password}`);
     e.preventDefault();
+    console.log(import.meta.env.VITE_PORT);
     try {
       const response = await axios.post(`${import.meta.env.VITE_PORT}/login`, {
         email,

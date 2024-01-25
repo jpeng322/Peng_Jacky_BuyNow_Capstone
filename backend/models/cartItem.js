@@ -13,6 +13,14 @@ const CartItemSchema = new Schema({
   quantity: {
     type: Number,
     required: true,
+    default: 0,
+  },
+  itemId: {
+    type: String,
+    required: true,
+  },
+  photo: {
+    type: String,
   },
 });
 

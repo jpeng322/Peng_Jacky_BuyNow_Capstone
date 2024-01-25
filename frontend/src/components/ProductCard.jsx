@@ -1,51 +1,33 @@
 import React from "react";
 import products from "../../data2";
-
-// const ProductCard = () => {
-//   const firstItem = products.data[0];
-//   console.log(products);
-//   return (
-//     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-//       <a href="#">
-//         <img
-//           className="p-8 rounded-t-lg"
-//           src={firstItem.product_photos[0]}
-//           alt="product image"
-//         />
-//       </a>
-//       <div className="px-5 pb-5">
-//         <a href="#">
-//           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-//             {firstItem.product_title}
-//           </h5>
-//         </a>
-//         {firstItem.product_rating && (
-//           <div className="flex items-center mt-2.5 mb-5">
-//             <div className="flex items-center space-x-1 rtl:space-x-reverse">
-//               <SvgComponent />
-//             </div>
-//             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
-//               {firstItem.product_rating}
-//             </span>
-//           </div>
-//         )}
-//         <div className="flex  justify-between flex-col">
-//           <span className="text-3xl font-bold text-gray-900 dark:text-white">
-//             Estimated Price: {firstItem.offer.price}
-//           </span>
-//           <a
-//             href="#"
-//             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-//           >
-//             Add to cart
-//           </a>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+import axios from "axios";
 
 const ProductCard = ({ product }) => {
+  const submitAdd = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/api/cart/cartItem`,
+        {
+          productTitle: product.product_title,
+          price: product.offer.price,
+          photo: product.product_photos[0],
+          userId: localStorage.getItem("id"),
+          itemId: product.product_id
+        }
+      );
+
+      if (response) {
+        const data = response.data;
+        console.log(data);
+      } else {
+        console.log("Login failed");
+      }
+    } catch (e) {}
+  };
+
+  console.log(product);
+
   if (!product) return;
   return (
     <div className="border  bg-white border border-gray-200 rounded-lg shadow  p-5 flex flex-col gap-3">
@@ -75,15 +57,16 @@ const ProductCard = ({ product }) => {
         />
       </div>
       <footer className="flex flex-col gap-2 mt-4 border-red-400">
-        <a
-          href="#"
+        <button
+          onClick={submitAdd}
           className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-600 hover:bg-green-700  duration-100"
         >
           Add to Cart
-        </a>
+        </button>
         <a
           href={product.offer.offer_page_url}
           target="_blank"
+          rel="noreferrer"
           className="border border-green-600 text-green-600 border-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:text-green-700 duration-100"
         >
           More Information

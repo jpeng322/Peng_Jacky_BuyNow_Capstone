@@ -12,7 +12,7 @@ const Signup = () => {
     console.log(`Email: ${email}, Password: ${password}`);
     e.preventDefault();
     try {
-      const response = await axios.post(`http://host:3000/signup`, {
+      const response = await axios.post(`${import.meta.env.VITE_PORT}/signup`, {
         email,
         password,
         fname,

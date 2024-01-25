@@ -4,6 +4,7 @@ const User = require("../models/users.js");
 const CartItem = require("../models/cartItem.js");
 
 router.post("/cartitem", async (req, res) => {
+  console.log(req.body);
   try {
     const user = await User.findById(req.body.userId).populate("items");
     if (!user) {
@@ -15,8 +16,7 @@ router.post("/cartitem", async (req, res) => {
     });
 
     if (hasCartItem) {
-
-     await CartItem.findByIdAndUpdate(
+      await CartItem.findByIdAndUpdate(
         hasCartItem._id.toString(),
         { quantity: hasCartItem.quantity + 1 },
         { new: true }
@@ -29,6 +29,7 @@ router.post("/cartitem", async (req, res) => {
         price: parseInt(req.body.price.replace("$", "")),
         quantity: 1,
         itemId: req.body.itemId,
+        photo: req.body.photo,
       });
 
       const savedCartItem = await cartItem.save();
@@ -79,4 +80,40 @@ router.get("/cartitem/:itemId", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+// router.delete("/removeCartItem/:itemId", async (req, res) => {
+//   console.log("route hit", req.params.userId, req.params.itemId);
+//   try {
+//     const user = await User.findById(req.params.userId);
+
+//     if (!user) {
+//       return res.status(404).send("User not found");
+//     }
+
+//     user.items.pull(req.params.cartItemId);
+//     await user.save();
+
+//     res.send({ message: "CartItem removed successfully" });
+//   } catch (e) {
+//     console.log(e);
+//     res.status(500).send(e);
+//   }
+// });
+
+
+router.delete("/removeCartItem/:cartItemId", async (req, res) => {
+  try {
+     // Delete the CartItem
+     const deletedCartItem = await CartItem.findByIdAndDelete(req.params.cartItemId);
+ 
+     if (!deletedCartItem) {
+       return res.status(404).send("CartItem not found");
+     }
+ 
+     res.send({ message: "CartItem removed successfully", data: deletedCartItem });
+  } catch (e) {
+     console.log(e)
+     res.status(500).send(e);
+  }
+ });
 module.exports = router;

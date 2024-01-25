@@ -10,6 +10,11 @@ import Shop from "./pages/Shop";
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Checkout from "./pages/Checkout";
+
+
+//api
+import { getCartItems } from "./api";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +40,13 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
+        loader: () => {
+          return getCartItems();
+        },
       },
       {
         path: "*",
